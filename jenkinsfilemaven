@@ -30,7 +30,7 @@ pipeline {
             post {
                 success {
                     // junit '**/target/surefire-reports/TEST-*.xml'
-
+                    // list the files in the target directory to verify that the jar file is there
                     sh 'ls -lah target/'
                     archiveArtifacts artifacts: 'target/*.jar'          // <–– this tells Jenkins to keep the jar
                 }
