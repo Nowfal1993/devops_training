@@ -30,8 +30,11 @@ pipeline {
             post {
                 success {
                     // junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'          // <–– this tells Jenkins to keep the jar
+
+                    sh 'ls -lah target/'
+                    archiveArtifacts artifacts: 'target/*.jar'          // <–– this tells Jenkins to keep the jar
                 }
+                
             }
         }
     }
