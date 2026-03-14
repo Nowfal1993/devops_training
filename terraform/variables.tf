@@ -19,7 +19,7 @@ variable "security_group_description" {
 variable "ami_id" {
   description = "AMI ID for the EC2 instance (Amazon Linux 2)"
   type        = string
-  default     =  var.ami_id  # Amazon Linux 2 AMI (update based on your region)
+  default     = "ami-0c55b159cbfafe1d0"  # Amazon Linux 2 AMI for us-east-1
 }
 
 variable "instance_type" {
@@ -33,4 +33,47 @@ variable "env" {
   description = "Environment tag for the EC2 instance"
   type        = string
   default     = "dev"
+}
+
+variable "s3_bucket_name" {
+  description = "Name of the S3 bucket"
+  type        = string
+  default     = "my-terraform-bucket-12345"
+}
+
+variable "db_instance_identifier" {
+  description = "Identifier for the RDS instance"
+  type        = string
+  default     = "my-rds-instance"
+}
+
+variable "db_engine" {
+  description = "Database engine for RDS"
+  type        = string
+  default     = "mysql"
+}
+
+variable "db_instance_class" {
+  description = "Instance class for RDS"
+  type        = string
+  default     = "db.t3.micro"
+}
+
+variable "db_username" {
+  description = "Username for the database"
+  type        = string
+  default     = "admin"
+}
+
+variable "db_password" {
+  description = "Password for the database"
+  type        = string
+  default     = "password123"
+  sensitive   = true
+}
+
+variable "db_allocated_storage" {
+  description = "Allocated storage for the database in GB"
+  type        = number
+  default     = 20
 }

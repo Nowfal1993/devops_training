@@ -39,3 +39,30 @@ resource "aws_instance" "web_server" {
     Environment = var.env
   }
 }
+
+# Create an S3 Bucket
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = var.s3_bucket_name
+
+  tags = {
+    Name        = var.s3_bucket_name
+    Environment = var.env
+  }
+}
+
+# Create an RDS Instance
+resource "aws_db_instance" "my_db" {
+  identifier             = var.db_instance_identifier
+  engine                 = var.db_engine
+  instance_class         = var.db_instance_class
+  username               = var.db_username
+  password               = var.db_password
+  allocated_storage      = var.db_allocated_storage
+  publicly_accessible    = false
+  skip_final_snapshot    = true
+
+  tags = {
+    Name        = var.db_instance_identifier
+    Environment = var.env
+  }
+}
